@@ -1,0 +1,68 @@
+#include <stdio.h>#include #include <stdio.h>
+#include <string.h>
+
+#define NUM_ESTADOS 8
+#define NUM_CIDADES_POR_ESTADO 4
+#define MAX_CARTAS (NUM_ESTADOS * NUM_CIDADES_POR_ESTADO)
+
+// Estrutura para armazenar os dados de uma cidade
+typedef struct {
+    char codigo[4];  // Exemplo: "A01", "B02"
+    int populacao;
+    float area;
+    double pib;
+    int pontos_turisticos;
+} CartaCidade;
+
+void cadastrarCartas(CartaCidade cartas[], int totalCartas) {
+    printf("Cadastro de Cartas de Cidades\n\n");
+
+    for (int i = 0; i < totalCartas; i++) {
+        printf("Carta %d de %d\n", i + 1, totalCartas);
+        printf("Informe o código da cidade (Ex: A01, B02): ");
+        scanf("%3s", cartas[i].codigo);
+        
+        printf("Informe a população: ");
+        scanf("%d", &cartas[i].populacao);
+
+        printf("Informe a área (em km^2): ");
+        scanf("%f", &cartas[i].area);
+
+        printf("Informe o PIB (em bilhões): ");
+        scanf("%lf", &cartas[i].pib);
+
+        printf("Informe o número de pontos turísticos: ");
+        scanf("%d", &cartas[i].pontos_turisticos);
+
+        printf("\n");
+    }
+}
+
+void exibirCartas(const CartaCidade cartas[], int totalCartas) {
+    printf("\n--- Cartas Cadastradas ---\n\n");
+
+    for (int i = 0; i < totalCartas; i++) {
+        printf("Cidade %s:\n", cartas[i].codigo);
+        printf("  População: %d habitantes\n", cartas[i].populacao);
+        printf("  Área: %.2f km^2\n", cartas[i].area);
+        printf("  PIB: %.2lf bilhões\n", cartas[i].pib);
+        printf("  Pontos turísticos: %d\n", cartas[i].pontos_turisticos);
+        printf("-------------------------\n");
+    }
+}
+
+int main() {
+    CartaCidade cartas[MAX_CARTAS];
+    int totalCartas = NUM_ESTADOS * NUM_CIDADES_POR_ESTADO;
+
+    printf("Bem-vindo ao sistema Super Trunfo - Países!\n\n");
+
+    // Cadastro das cartas
+    cadastrarCartas(cartas, totalCartas);
+
+    // Exibição das cartas cadastradas
+    exibirCartas(cartas, totalCartas);
+
+    return 0;
+}
+stdio.h>    
